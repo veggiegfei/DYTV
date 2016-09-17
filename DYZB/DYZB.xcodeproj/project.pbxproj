@@ -18,6 +18,7 @@
 		50F54B981D8CD66D00CE86B6 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F54B971D8CD66D00CE86B6 /* LiveViewController.swift */; };
 		50F54B9A1D8CDC7C00CE86B6 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F54B991D8CDC7C00CE86B6 /* profile.storyboard */; };
 		50F54B9C1D8CDD8A00CE86B6 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F54B9B1D8CDD8A00CE86B6 /* Follow.storyboard */; };
+		50F54B9E1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F54B9D1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		50F54B971D8CD66D00CE86B6 /* LiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		50F54B991D8CDC7C00CE86B6 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
 		50F54B9B1D8CDD8A00CE86B6 /* Follow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Follow.storyboard; sourceTree = "<group>"; };
+		50F54B9D1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		50F54B7B1D8CD41C00CE86B6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				50F54B9D1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F54B9E1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift in Sources */,
 				50F54B651D8BEDF700CE86B6 /* MainViewController.swift in Sources */,
 				50F54B631D8BEDF700CE86B6 /* AppDelegate.swift in Sources */,
 				50F54B981D8CD66D00CE86B6 /* LiveViewController.swift in Sources */,

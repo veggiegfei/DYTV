@@ -27,7 +27,7 @@
         <!--Home View Controller-->
         <scene sceneID="dAS-1t-0JC">
             <objects>
-                <viewController id="fNX-Vw-aH7" userLabel="Home View Controller" sceneMemberID="viewController">
+                <viewController id="fNX-Vw-aH7" userLabel="Home View Controller" customClass="HomeViewController" customModule="DYZB" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uNm-Yf-GJZ"/>
                         <viewControllerLayoutGuide type="bottom" id="7tO-Si-fPA"/>
