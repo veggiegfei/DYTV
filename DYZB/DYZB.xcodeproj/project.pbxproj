@@ -19,6 +19,8 @@
 		50F54B9A1D8CDC7C00CE86B6 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F54B991D8CDC7C00CE86B6 /* profile.storyboard */; };
 		50F54B9C1D8CDD8A00CE86B6 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F54B9B1D8CDD8A00CE86B6 /* Follow.storyboard */; };
 		50F54B9E1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F54B9D1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift */; };
+		50F54BA21D8D2CFB00CE86B6 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F54BA11D8D2CFB00CE86B6 /* PageTitleView.swift */; };
+		50F54BA41D8D736D00CE86B6 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F54BA31D8D736D00CE86B6 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		50F54B991D8CDC7C00CE86B6 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
 		50F54B9B1D8CDD8A00CE86B6 /* Follow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Follow.storyboard; sourceTree = "<group>"; };
 		50F54B9D1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extension.swift"; sourceTree = "<group>"; };
+		50F54BA11D8D2CFB00CE86B6 /* PageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
+		50F54BA31D8D736D00CE86B6 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				50F54B7B1D8CD41C00CE86B6 /* Extension */,
+				50F54BA31D8D736D00CE86B6 /* Common.swift */,
 			);
 			name = "Tools（工具）";
 			path = Tools;
@@ -203,6 +208,7 @@
 		50F54B811D8CD43A00CE86B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				50F54BA11D8D2CFB00CE86B6 /* PageTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,11 +357,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F54BA21D8D2CFB00CE86B6 /* PageTitleView.swift in Sources */,
 				50F54B9E1D8D1CD000CE86B6 /* UIBarButtonItem-Extension.swift in Sources */,
 				50F54B651D8BEDF700CE86B6 /* MainViewController.swift in Sources */,
 				50F54B631D8BEDF700CE86B6 /* AppDelegate.swift in Sources */,
 				50F54B981D8CD66D00CE86B6 /* LiveViewController.swift in Sources */,
 				50F54B911D8CD5D600CE86B6 /* HomeViewController.swift in Sources */,
+				50F54BA41D8D736D00CE86B6 /* Common.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

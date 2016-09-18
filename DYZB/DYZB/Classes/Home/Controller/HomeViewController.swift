@@ -8,7 +8,18 @@
 
 import UIKit
 
+private let kTitleViewH : CGFloat = 40
+
 class HomeViewController: UIViewController {
+    
+    //MARK:-懒加载属性
+    private lazy var pageTitleView: PageTitleView = {
+        let titleFrame = CGRect(x: 0, y: kStatusBarH + kNavigationBarH, width: kScreenW, height:kTitleViewH)
+        let titles = ["推荐","游戏","娱乐","趣玩"]
+        let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        return titleView
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +33,27 @@ class HomeViewController: UIViewController {
 //MARK--设置UI界面
 extension HomeViewController {
     
+ 
     //swift中的访问修饰符
     //private 访问级别所修饰的属性或者方法只能在当前的Swift源文件中可以访问
     //internal 访问级别所修饰的属性或者方法在源代码所在的整个模块都可以访问
     //public可以被任何人使用
     private func setupUI() {
-       //设置导航栏
+        
+        //0.不需要调整UIScrollView的内边距
+        automaticallyAdjustsScrollViewInsets = false
+        
+       //1.设置导航栏
        setupNavigationBar()
+        
+        //2.添加TitleView
+        view.addSubview(pageTitleView)
+        
+     
+       
     }
-    
-    
+
+
     private func setupNavigationBar(){
         //1.设置左侧的Item
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "logo")
