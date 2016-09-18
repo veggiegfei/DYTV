@@ -35,12 +35,13 @@ class HomeViewController: UIViewController {
             
             childVcs.append(vc)
         }
-        let contentView = PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self!)//父类
-        
+        let contentView = PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)//父类
+
+        contentView.delegate = self
         return contentView
     }()
     
-
+   //MARK:- 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +72,7 @@ extension HomeViewController {
         
         //3.添加contentView
         view.addSubview(pageContentView)
-        pageContentView.backgroundColor = UIColor.purpleColor()
+       
  }
 
 
@@ -96,6 +97,24 @@ extension HomeViewController: PageTitleViewDelegate {
         pageContentView.setCurrentIndex(index)
    
     }
+}
+//MARK:遵守协议
+extension HomeViewController : PageContentViewDelegate {
+    
+    func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        
+        pageTitleView.setTitleWithProgress(progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
