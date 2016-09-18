@@ -8,8 +8,12 @@
 
 import UIKit
 
+//MARK:定义协议
+protocol PageTitleViewDelegate : class {//表示协议只能被类遵守
+    func pageTitleView(titleView: PageTitleView, selectedIndex index: Int)
+}
 
-//定义常量
+//MARK:定义常量
 private let kScrollLineH : CGFloat = 2
 private let kNormalColor : (CGFloat, CGFloat, CGFloat) = (85, 85, 85)
 private let kSelectColor : (CGFloat, CGFloat, CGFloat) = (255, 128, 0)
@@ -21,6 +25,8 @@ class PageTitleView: UIView {
     //MARK:定义属性
     private var currentIndex : Int = 0
     private var titles : [String]
+    //定义代理属性要用weak
+    weak var delegate : PageTitleViewDelegate?
     
     
     
@@ -68,10 +74,6 @@ extension PageTitleView{
         
         //3.添加scrollLine
         setupBottomLineAndScrollLine()
-        
-        
-    
-    
     }
 
 
@@ -93,6 +95,7 @@ private func setupTitleLabels() {
         label.tag = index
         label.font = UIFont.systemFontOfSize(16.0)
         label.textAlignment = .Center
+        label.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
       
         //3.设置label的frame
         let labelX : CGFloat = labelW * CGFloat(index)
@@ -101,7 +104,12 @@ private func setupTitleLabels() {
         //4.将label添加到scrollView
         scrollView.addSubview(label)
         titleLabels.append(label)
-    }
+        
+        //5.给Label添加手势
+        label.userInteractionEnabled = true
+        let tapGes = UITapGestureRecognizer(target: self, action: "titleLabelClick:")
+            label.addGestureRecognizer(tapGes)
+        }
     }
     
     
@@ -117,10 +125,42 @@ private func setupTitleLabels() {
         //2.添加scrollLine
         //2.1 获取第一个Label  guard不符合条件判断时往下执行
         guard let firstLabe = titleLabels.first else {return} //可选类型校验
+        firstLabe.textColor = UIColor(r: kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
         
         //2.2 设置scrollLine的属性
         scrollView.addSubview(scrollLine)
         scrollLine.frame = CGRect(x: firstLabe.frame.origin.x, y: frame.height - kScrollLineH, width: firstLabe.frame.width, height: kScrollLineH)
+        
+    }
+}
+
+//MARK: - 监听label的点击
+extension PageTitleView {
+    //如果是事件监听的话前面要加@objc
+    @objc private func titleLabelClick(tapGes : UITapGestureRecognizer) {
+        
+        //1.获取当前的label
+        guard let currentlabel = tapGes.view as? UILabel else { return }
+        
+        //2.获取之前的label
+        let oldLabel = titleLabels[currentIndex]
+    
+        //3.切换文字的颜色
+        currentlabel.textColor = UIColor(r:  kSelectColor.0, g: kSelectColor.1, b: kSelectColor.2)
+        oldLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2)
+        
+        //4.保存最新label的下标
+        currentIndex = currentlabel.tag
+        
+        //5.滚动条位置发生改变
+        let scrollLineX = CGFloat(currentIndex) * scrollLine.frame.width
+        UIView.animateWithDuration(0.15) {
+            self.scrollLine.frame.origin.x = scrollLineX
+        }
+        
+        //6.通知代理
+        delegate?.pageTitleView(self, selectedIndex: currentIndex)
+    
     }
 }
 

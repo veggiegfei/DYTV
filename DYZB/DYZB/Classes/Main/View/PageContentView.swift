@@ -14,13 +14,14 @@ class PageContentView: UIView {
     
     //MARK:定义属性
     private var childVcs: [UIViewController]
-    private  weak var parentViewController : UIViewController?
+    private  weak var parentViewController : UIViewController?//默认是强引用 循环引用，把这个改为弱引用  用weak只能修饰可选类型
     
     //MARK:懒加载属性
-    private lazy var collectionView : UICollectionView = {
+    private lazy var collectionView : UICollectionView = {[weak self] in
+        //闭包中用到self要用weak
         //1.创建layout 设置流水布局
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = self.bounds.size
+        layout.itemSize = (self?.bounds.size)!//可选链强制解包
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .Horizontal
@@ -97,6 +98,17 @@ extension PageContentView: UICollectionViewDataSource{
     }
 }
 
+// MARK: - 对外暴露的方法
+extension PageContentView {
+    
+    func setCurrentIndex(currentIndex: Int) {
+        print("index")
+        
+        //滚动到正确的位置
+        let offsetX = CGFloat(currentIndex) * collectionView.frame.width
+        collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: false)
+    }
+}
 
 
 
