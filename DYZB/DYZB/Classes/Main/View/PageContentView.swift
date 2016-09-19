@@ -59,6 +59,8 @@ class PageContentView: UIView {
         //设置UI
         setupUI()
         
+        
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

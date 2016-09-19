@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
         
         //2.确定所有的子控制器
         var childVcs = [UIViewController]()
-        for _ in 0..<4 {
-            
+        childVcs.append(RecommendViewController())
+        for _ in 0..<3 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g:CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
             
@@ -41,6 +41,11 @@ class HomeViewController: UIViewController {
         return contentView
     }()
     
+    
+
+    
+    
+    
    //MARK:- 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,7 @@ class HomeViewController: UIViewController {
         
     }
 }
+
 
 //MARK--设置UI界面
 extension HomeViewController {
@@ -90,7 +96,7 @@ extension HomeViewController {
 }
 
 
-//MARK:遵守协议
+//MARK:遵守PageContentViewDelegate协议
 extension HomeViewController: PageTitleViewDelegate {
     
     func pageTitleView(titleView: PageTitleView, selectedIndex index: Int) {
@@ -98,7 +104,7 @@ extension HomeViewController: PageTitleViewDelegate {
    
     }
 }
-//MARK:遵守协议
+//MARK:遵守PageContentViewDelegate协议
 extension HomeViewController : PageContentViewDelegate {
     
     func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
@@ -108,6 +114,8 @@ extension HomeViewController : PageContentViewDelegate {
 
 
 }
+
+
 
 
 
