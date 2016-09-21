@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1912" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,35 +13,31 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_header_phone" translatesAutoresizingMaskIntoConstraints="NO" id="yYQ-UO-9ap">
-                    <rect key="frame" x="8" y="16" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="V4q-OS-0hU"/>
                         <constraint firstAttribute="width" constant="18" id="reZ-XL-sey"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="颜值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwf-oA-WTa">
-                    <rect key="frame" x="44" y="14" width="34" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="34" id="JDC-Mb-aHO"/>
                         <constraint firstAttribute="height" constant="21" id="Uju-Q5-GH7"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89s-Z7-yLU">
-                    <rect key="frame" x="252" y="10" width="60" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89s-Z7-yLU">
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="YgH-XL-Bw7"/>
                         <constraint firstAttribute="width" constant="60" id="rTZ-sL-ae7"/>
                     </constraints>
                     <state key="normal" title="更多 &gt;">
-                        <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cQJ-Kg-Dby">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
-                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQJ-Kg-Dby">
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="nGe-pF-baf"/>
                     </constraints>
@@ -48,9 +45,9 @@
             </subviews>
             <constraints>
                 <constraint firstItem="89s-Z7-yLU" firstAttribute="top" secondItem="cQJ-Kg-Dby" secondAttribute="bottom" id="8IW-zS-0Mg"/>
-                <constraint firstAttribute="trailing" secondItem="cQJ-Kg-Dby" secondAttribute="trailing" id="MPK-LW-ugd"/>
+                <constraint firstAttribute="trailing" secondItem="cQJ-Kg-Dby" secondAttribute="trailing" constant="-8" id="MPK-LW-ugd"/>
                 <constraint firstItem="cQJ-Kg-Dby" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="NbZ-Gz-v9k"/>
-                <constraint firstAttribute="trailing" secondItem="89s-Z7-yLU" secondAttribute="trailing" constant="8" id="OsW-as-I3F"/>
+                <constraint firstAttribute="trailing" secondItem="89s-Z7-yLU" secondAttribute="trailing" id="OsW-as-I3F"/>
                 <constraint firstItem="yYQ-UO-9ap" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="8" id="ddC-y5-cln"/>
                 <constraint firstItem="cwf-oA-WTa" firstAttribute="top" secondItem="cQJ-Kg-Dby" secondAttribute="bottom" constant="4" id="dt1-ds-2bc"/>
                 <constraint firstItem="cwf-oA-WTa" firstAttribute="leading" secondItem="yYQ-UO-9ap" secondAttribute="trailing" constant="18" id="f0o-B5-taN"/>

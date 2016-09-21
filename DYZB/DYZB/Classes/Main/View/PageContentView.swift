@@ -10,7 +10,7 @@ import UIKit
 
 protocol PageContentViewDelegate : class {
     
-    func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex : Int, targetIndex: Int)
+    func pageContentView(_ contentView: PageContentView, progress: CGFloat, sourceIndex : Int, targetIndex: Int)
 }
 
 private let ContentCellID = "ContentCellID"
@@ -18,32 +18,32 @@ private let ContentCellID = "ContentCellID"
 class PageContentView: UIView {
     
     //MARK:定义属性
-    private var childVcs: [UIViewController]
-    private  weak var parentViewController : UIViewController?//默认是强引用 循环引用，把这个改为弱引用  用weak只能修饰可选类型
-    private var startOffsetX: CGFloat = 0
-    private var isForbidScrollDelegate : Bool = false
+    fileprivate var childVcs: [UIViewController]
+    fileprivate  weak var parentViewController : UIViewController?//默认是强引用 循环引用，把这个改为弱引用  用weak只能修饰可选类型
+    fileprivate var startOffsetX: CGFloat = 0
+    fileprivate var isForbidScrollDelegate : Bool = false
     weak var delegate : PageContentViewDelegate?
     
     //MARK:懒加载属性
-    private lazy var collectionView : UICollectionView = {[weak self] in
+    fileprivate lazy var collectionView : UICollectionView = {[weak self] in
         //闭包中用到self要用weak
         //1.创建layout 设置流水布局
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = (self?.bounds.size)!//可选链强制解包
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        layout.scrollDirection = .Horizontal
+        layout.scrollDirection = .horizontal
         
         //2.创建UICollectionView
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false//水平方向指示器
-        collectionView.pagingEnabled = true
+        collectionView.isPagingEnabled = true
         collectionView.bounces = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.scrollsToTop = false
         //获取类的类型用.self
-        collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: ContentCellID)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ContentCellID)
         
         return collectionView
     }()
@@ -72,7 +72,7 @@ class PageContentView: UIView {
 //MARK:- 设置UI界面
 extension PageContentView {
     
-    private func setupUI() {
+    fileprivate func setupUI() {
         
         //1.将所有子控制器添加到父控制器中
         for childVc in childVcs {
@@ -90,13 +90,13 @@ extension PageContentView {
 //MARK:- 遵守UICollectionViewDataSource
 extension PageContentView: UICollectionViewDataSource{
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVcs.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //1.创建Cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ContentCellID, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContentCellID, for: indexPath)
         
         //2.给Cell设置内容
         for view in cell.contentView.subviews {
@@ -104,7 +104,7 @@ extension PageContentView: UICollectionViewDataSource{
             view.removeFromSuperview()
         }
         
-        let childVc = childVcs[indexPath.item]
+        let childVc = childVcs[(indexPath as NSIndexPath).item]
         childVc.view.frame = cell.contentView.bounds
         cell.contentView.addSubview(childVc.view)
         
@@ -115,14 +115,14 @@ extension PageContentView: UICollectionViewDataSource{
 //MARK: - 遵守UICollectionViewDelegate
 extension PageContentView : UICollectionViewDelegate {
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         isForbidScrollDelegate = false
         
        startOffsetX = scrollView.contentOffset.x
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         //0.判断是否是点击事件
         if isForbidScrollDelegate {return}
@@ -179,7 +179,7 @@ extension PageContentView : UICollectionViewDelegate {
 // MARK: - 对外暴露的方法
 extension PageContentView {
     
-    func setCurrentIndex(currentIndex: Int) {
+    func setCurrentIndex(_ currentIndex: Int) {
       
         //1.记录需要禁止执行代理方法
         isForbidScrollDelegate = true

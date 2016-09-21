@@ -24,21 +24,21 @@ extension UIBarButtonItem {
     //构造函数以init开头，不需要写返回值，extension中对系统类扩充构造函数，只能扩充便利构造函数。
     //便利构造函数: 1>必须以convenience开头 2>在构造函数中必须明确调用一个设计的构造函数(self)
     //Swift语法 String = "",表示相传就传，不想穿就为空;size: CGSize = CGSizeZero表示有CGSize就传，没有就传CGSizeZero
-   convenience init(imageName: String, hightImageName: String = "", size: CGSize = CGSizeZero) {
+   convenience init(imageName: String, hightImageName: String = "", size: CGSize = CGSize.zero) {
         //1.创建UIbutton
         let btn = UIButton()
     
         //2.设置button的图片
-        btn.setImage(UIImage(named: imageName), forState: .Normal)
+        btn.setImage(UIImage(named: imageName), for: UIControlState())
     if hightImageName != ""{
-        btn.setImage(UIImage(named: hightImageName), forState: .Highlighted)
+        btn.setImage(UIImage(named: hightImageName), for: .highlighted)
     }
     
        //3.设置btn的尺寸
-    if size == CGSizeZero {
+    if size == CGSize.zero {
         btn.sizeToFit()
     }else{
-        btn.frame = CGRect(origin: CGPointZero, size: size)
+        btn.frame = CGRect(origin: CGPoint.zero, size: size)
     }
     
     //4.创建UIBarButtonItem

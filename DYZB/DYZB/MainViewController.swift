@@ -20,7 +20,7 @@ class MainViewController: UITabBarController {
     }
     
     //抽取添加子控制器的方法
-    private func addChildVc(storyName: String) {
+    fileprivate func addChildVc(_ storyName: String) {
         
         //通过storyboard获取控制器
         let childVc = UIStoryboard(name: storyName, bundle: nil).instantiateInitialViewController()! //可选类型 !可选类型强制解包就是确定类型
